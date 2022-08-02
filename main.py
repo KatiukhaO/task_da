@@ -11,13 +11,13 @@ endpoint = "cb.jwehljizv78ywblm.cloud.couchbase.com"
 username = "1109katiuha@gmail.com"
 password = os.environ.get("PASSWORD")
 bucket_name = "travel-sample"
-FILE_PATH = r'C:\Users\1109k\Desktop\test_travel-sample_data.csv'
+FILE_PATH = r"C:\Users\1109k\Desktop\test_travel-sample_data.csv"
 
 auth = PasswordAuthenticator(username, password)
 
 timeout_opts = ClusterTimeoutOptions(kv_timeout=timedelta(seconds=10))
 
-cluster = Cluster('couchbases://{}'.format(endpoint),
+cluster = Cluster(f"couchbases://{endpoint}",
                   ClusterOptions(auth, timeout_options=timeout_opts))
 
 cluster.wait_until_ready(timedelta(seconds=5))
@@ -32,8 +32,7 @@ def load_data():
     except Exception as e:
         print(e)
 
-if __name__ == '__main__':
-
+def main():
     travel_data = load_data()
 
     df_ = pandas.DataFrame(travel_data)
@@ -54,6 +53,10 @@ if __name__ == '__main__':
     df2 = df1.copy()
     df2["textColumn"] = "test"
 
-    df1.merge(df2, how="cross")
+    df1 = df1.merge(df2, how="cross")
     print("Merge ...")
     print(df1)
+
+
+if __name__ == "__main__":
+    main()
