@@ -6,7 +6,6 @@ from couchbase.auth import PasswordAuthenticator
 from couchbase.cluster import Cluster
 from couchbase.options import ClusterOptions, ClusterTimeoutOptions
 
-
 endpoint = "cb.jwehljizv78ywblm.cloud.couchbase.com"
 username = "1109katiuha@gmail.com"
 password = os.environ.get("PASSWORD")
@@ -32,12 +31,13 @@ def load_data():
     except Exception as e:
         print(e)
 
+
 def main():
     travel_data = load_data()
 
     df_ = pandas.DataFrame(travel_data)
 
-    data_dict = {key : [] for row in df_.values for key in row[0]}
+    data_dict = {key: [] for row in df_.values for key in row[0]}
 
     for row in df_.values:
         for key in data_dict.keys():
