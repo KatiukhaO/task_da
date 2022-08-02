@@ -4,7 +4,7 @@ from datetime import timedelta
 import pandas as pandas
 from couchbase.auth import PasswordAuthenticator
 from couchbase.cluster import Cluster
-from couchbase.options import ClusterOptions, ClusterTimeoutOptions, QueryOptions
+from couchbase.options import ClusterOptions, ClusterTimeoutOptions
 
 
 endpoint = "cb.jwehljizv78ywblm.cloud.couchbase.com"
@@ -57,6 +57,3 @@ if __name__ == '__main__':
     df1.merge(df2, how="cross")
     print("Merge ...")
     print(df1)
-
-
-
