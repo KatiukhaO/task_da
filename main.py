@@ -11,6 +11,7 @@ endpoint = "cb.jwehljizv78ywblm.cloud.couchbase.com"
 username = "1109katiuha@gmail.com"
 password = os.environ.get("PASSWORD")
 bucket_name = "travel-sample"
+FILE_PATH = r'C:\Users\1109k\Desktop\test_travel-sample_data.csv'
 
 auth = PasswordAuthenticator(username, password)
 
@@ -47,7 +48,7 @@ if __name__ == '__main__':
                 data_dict[key].append(None)
 
     df1 = pandas.DataFrame(data_dict)
-    df1.to_csv(r'C:\Users\1109k\Desktop\test_travel-sample_data.csv')
+    df1.to_csv(FILE_PATH)
     print("CSV file was create success")
 
     df2 = df1.copy()
